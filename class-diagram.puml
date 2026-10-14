@@ -1,0 +1,14 @@
+@startuml
+abstract class BankAccount
+class SavingsAccount
+class CurrentAccount
+class Bank {
+  - accounts: Map<String, BankAccount>
+  + transfer(from, to, amount): void
+}
+class Transaction
+BankAccount <|-- SavingsAccount
+BankAccount <|-- CurrentAccount
+Bank "1" o-- "0..*" BankAccount
+BankAccount "1" *-- "0..*" Transaction
+@enduml
